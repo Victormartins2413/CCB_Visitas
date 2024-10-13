@@ -26,7 +26,7 @@ def send_email(user_email, pdf_file=None):
     try:
         # Conectando ao servidor Gmail SMTP (SSL)
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, "SUA_SENHA_DO_GMAIL")  # Substitua pela sua senha do Gmail ou senha de aplicativo
+            server.login(sender_email, "tuguitom@gmail.com")  # Substitua pela sua senha do Gmail ou senha de aplicativo
             server.sendmail(sender_email, user_email, msg.as_string())
         return True
     except Exception as e:
