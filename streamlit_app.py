@@ -56,7 +56,8 @@ st.markdown(f"""
         background-size: cover;  /* Ajusta o tamanho da imagem para cobrir todo o fundo */
         background-position: center;  /* Centraliza a imagem */
         background-repeat: no-repeat;  /* Não repete a imagem */
-        color: white;  /* Muda a cor do texto para branco */
+        color: black;  /* Muda a cor do texto para preto */
+        padding: 20px;  /* Adiciona espaçamento ao redor do conteúdo */
     }}
     </style>
 """, unsafe_allow_html=True)
