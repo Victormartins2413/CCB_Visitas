@@ -53,9 +53,10 @@ st.markdown(f"""
     <style>
     .stApp {{
         background-image: url("{background_image_url}");
-        background-size: cover;  /* Ajusta o tamanho da imagem para cobrir todo o fundo */
+        background-size: contain;  /* Ajusta o tamanho da imagem para caber no fundo */
         background-position: center;  /* Centraliza a imagem */
         background-repeat: no-repeat;  /* Não repete a imagem */
+        height: 100vh;  /* Define a altura da área de fundo */
     }}
     </style>
 """, unsafe_allow_html=True)
