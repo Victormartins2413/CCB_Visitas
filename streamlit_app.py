@@ -26,7 +26,7 @@ def send_email(user_email, pdf_file=None):
     try:
         # Conectando ao servidor Gmail SMTP (SSL)
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, "tuguitom@gmail.com")  # Substitua pela sua senha do Gmail ou senha de aplicativo
+            server.login(sender_email, "SUA_SENHA_DO_GMAIL")  # Substitua pela sua senha do Gmail ou senha de aplicativo
             server.sendmail(sender_email, user_email, msg.as_string())
         return True
     except Exception as e:
@@ -56,8 +56,20 @@ st.markdown(f"""
         background-size: cover;  /* Ajusta o tamanho da imagem para cobrir todo o fundo */
         background-position: center;  /* Centraliza a imagem */
         background-repeat: no-repeat;  /* Não repete a imagem */
-        color: black;  /* Muda a cor do texto para preto */
+        color: white;  /* Muda a cor do texto para branco */
         padding: 20px;  /* Adiciona espaçamento ao redor do conteúdo */
+    }}
+    
+    /* Estilo para os campos do formulário */
+    input, textarea, select {{
+        background-color: rgba(0, 0, 0, 0.5);  /* Fundo preto semi-transparente */
+        color: white;  /* Cor do texto em branco */
+        border: 1px solid white;  /* Borda branca */
+    }}
+
+    /* Estilo para os rótulos dos campos */
+    label {{
+        color: white;  /* Cor do texto dos rótulos em branco */
     }}
     </style>
 """, unsafe_allow_html=True)
