@@ -1,4 +1,14 @@
 import streamlit as st
+from PIL import Image
+
+# Carregar e redimensionar a imagem
+background_image = Image.open("CCB_JD_São_Pedro.png")
+background_image = background_image.resize((800, 600))  # Ajuste a largura e altura conforme necessário
+
+# Usar a imagem como fundo
+st.image(background_image, use_column_width=True)
+
+# O restante do seu código permanece o mesmo
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -44,21 +54,6 @@ def generate_pdf(data):
     pdf_file = "dados_cadastro.pdf"
     pdf.output(pdf_file)
     return pdf_file
-
-# URL da imagem de fundo
-background_image_url = "https://raw.githubusercontent.com/Victormartins2413/CCB_Visitas/main/CCB_JD_São_Pedro.png"  # Ajuste conforme necessário
-
-# Adiciona CSS para a imagem de fundo
-st.markdown(f"""
-    <style>
-    .stApp {{
-        background-image: url("{background_image_url}");
-        background-size: cover;  /* Ajusta o tamanho da imagem para cobrir todo o fundo */
-        background-position: center;  /* Centraliza a imagem */
-        background-repeat: no-repeat;  /* Não repete a imagem */
-    }}
-    </style>
-""", unsafe_allow_html=True)
 
 # Título e Cabeçalho
 st.title("Congregação Cristã no Brasil")
