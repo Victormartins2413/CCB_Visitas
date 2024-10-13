@@ -2,21 +2,20 @@ import streamlit as st
 import smtplib
 from email.mime.text import MIMEText
 from fpdf import FPDF
-from PIL import Image  # Importar biblioteca para carregar imagens
+from PIL import Image
+import requests
 
-# Função para enviar email (sem alterações)
+# Função para enviar email
 def send_email(user_email):
     sender_email = "tuguitosmartins@gmail.com"
     subject = "Irmão auxiliar! Visita cadastrada."
     body = "Irmão auxiliar! Visita cadastrada com sucesso."
 
-    # Configure a mensagem do email
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = sender_email
     msg["To"] = user_email
 
-    # Enviar o email pelo servidor SMTP do Gmail
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(sender_email, "SUA_SENHA_DO_GMAIL")
@@ -26,7 +25,7 @@ def send_email(user_email):
         print(f"Erro ao enviar email: {e}")
         return False
 
-# Função para gerar PDF (sem alterações)
+# Função para gerar PDF
 def generate_pdf(data):
     pdf = FPDF()
     pdf.add_page()
@@ -44,12 +43,30 @@ st.title("Congregação Cristã no Brasil")
 st.subheader("Cadastro de Participação da Reunião de Jovens e Menores Jd. São Pedro")
 
 # Carregar e exibir a imagem
-image_path = "CCB_JD_São_Pedro.png"  # Caminho para a imagem
-image = Image.open(image_path)  # Abrir a imagem
+image_path = "https://github.com/SEU_USUÁRIO/SEU_REPOSITORIO/raw/main/CCB_JD_São_Pedro.png"  # Atualize com a URL correta
+image = Image.open(requests.get(image_path, stream=True).raw)  # Abrir a imagem diretamente da URL
 st.image(image, caption='Igreja Congregação Cristã no Brasil - Jd. São Pedro', use_column_width=True)
 
+# Usar CSS para posicionar os campos sobre a imagem
+st.markdown("""
+    <style>
+    .form-container {
+        position: absolute;
+        top: 100px; /* Ajuste a posição vertical conforme necessário */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Formulário
-with st.form(key="cadastro_form"):
+with st.form(key="cadastro_form", clear_on_submit=True):
+    st.markdown('<div class="form-container">', unsafe_allow_html=True)  # Início do contêiner do formulário
+
     user_email = st.text_input("Seu Email:", placeholder="Digite seu email aqui")
     nome = st.text_input("Nome:")
     idade = st.number_input("Idade:", min_value=0)
@@ -81,6 +98,8 @@ with st.form(key="cadastro_form"):
         escola = st.text_input("Escola:")
     
     submit_button = st.form_submit_button(label="Enviar")
+    
+    st.markdown('</div>', unsafe_allow_html=True)  # Fim do contêiner do formulário
 
 # Após o envio, mostrar uma mensagem de agradecimento e enviar o email
 if submit_button:
