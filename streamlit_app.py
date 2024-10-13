@@ -1,8 +1,9 @@
 import streamlit as st
 from PIL import Image
 
-# Carregar e redimensionar a imagem
+# Carregar a imagem de fundo
 background_image = Image.open("CCB_JD_São_Pedro.png")
+# Redimensionar a imagem de fundo
 background_image = background_image.resize((800, 600))  # Ajuste a largura e altura conforme necessário
 
 # Usar a imagem como fundo
