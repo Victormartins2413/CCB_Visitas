@@ -56,7 +56,7 @@ st.markdown(f"""
         background-size: cover;  /* Ajusta o tamanho da imagem para cobrir todo o fundo */
         background-position: center;  /* Centraliza a imagem */
         background-repeat: no-repeat;  /* Não repete a imagem */
-        color: white;  /* Muda a cor do texto para branco */
+        color: white;  /* Muda a cor do texto padrão para branco */
         padding: 20px;  /* Adiciona espaçamento ao redor do conteúdo */
     }}
     
@@ -70,6 +70,11 @@ st.markdown(f"""
     /* Estilo para os rótulos dos campos */
     label {{
         color: white;  /* Cor do texto dos rótulos em branco */
+    }}
+
+    /* Estilo para os títulos e subtítulos */
+    h1, h2, h3 {{
+        color: white;  /* Cor do texto dos títulos em branco */
     }}
     </style>
 """, unsafe_allow_html=True)
